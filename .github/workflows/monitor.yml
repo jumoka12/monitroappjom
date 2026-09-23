@@ -1,1 +1,30 @@
+name: Play Store monitor
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 min (GitHub may delay it a bit)
+  workflow_dispatch:         # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: playstore-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check apps
+        run: python3 check.py
+
+      - name: Save results
+        run: |
+          git config user.name "monitor-bot"
+          git config user.email "monitor-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || (git commit -m "Status update" && git push)
 
