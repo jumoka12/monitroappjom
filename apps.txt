@@ -1,3 +1,4 @@
 # One package name per line (the id= part of the Play Store link)
-com.example.myapp
-com.example.otherapp
+com.naughtymonkeysimulator.prankgames
+com.obbyprison.runescape
+com.huaweihealthandroid.uaelevanhut.huaweihealthoriginalapk
