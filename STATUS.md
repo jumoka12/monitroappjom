@@ -3,5 +3,5 @@
 | App | Status | Since |
 |---|---|---|
 | `com.huaweihealthandroid.uaelevanhut.huaweihealthoriginalapk` | 🔴 DOWN | 2026-10-02 08:57 |
-| `com.naughtymonkeysimulator.prankgames` | 🟢 UP | 2026-09-27 17:40 |
-| `com.obbyprison.runescape` | 🟢 UP | 2026-10-06 15:05 |
+| `com.naughtymonkeysimulator.prankgames` | 🔴 DOWN | 2026-10-08 02:02 |
+| `com.obbyprison.runescape` | 🔴 DOWN | 2026-10-08 02:02 |
