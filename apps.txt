@@ -2,3 +2,4 @@
 com.naughtymonkeysimulator.prankgames
 com.obbyprison.runescape
 com.huaweihealthandroid.uaelevanhut.huaweihealthoriginalapk
+com.capcut.aivideoeditor1
