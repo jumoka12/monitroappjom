@@ -11,6 +11,10 @@
     "com.huaweihealthandroid.uaelevanhut.huaweihealthoriginalapk": {
       "status": "DOWN",
       "since": "2026-10-02T08:57:14.227228+00:00"
+    },
+    "com.capcut.aivideoeditor1": {
+      "status": "UP",
+      "since": "2026-10-10T15:19:40.373154+00:00"
     }
   },
   "heartbeat": "2026-10-10"
