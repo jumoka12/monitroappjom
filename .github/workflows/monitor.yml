@@ -1,12 +1,16 @@
 name: Play Store monitor
 
+# GitHub delays scheduled runs by hours, so one run stays alive and checks
+# every 5 minutes, then starts its own replacement. The cron is only a
+# backup that restarts the loop if it ever stops.
 on:
   schedule:
-    - cron: "*/5 * * * *"   # every 5 min (GitHub may delay it a bit)
+    - cron: "17 * * * *"
   workflow_dispatch:         # lets you run it manually from the Actions tab
 
 permissions:
   contents: write
+  actions: write             # needed to start the next run
 
 concurrency:
   group: playstore-monitor
@@ -15,16 +19,27 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 350     # GitHub's limit is 360
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check apps
-        run: python3 check.py
-
-      - name: Save results
+      - name: Check apps every 5 minutes
         run: |
           git config user.name "monitor-bot"
           git config user.email "monitor-bot@users.noreply.github.com"
-          git add -A
-          git diff --cached --quiet || (git commit -m "Status update" && git push)
+          end=$((SECONDS + 330 * 60))
+          while [ "$SECONDS" -lt "$end" ]; do
+            python3 check.py || echo "check failed, trying again next round"
+            git add -A
+            git diff --cached --quiet || git commit -q -m "Status update"
+            if [ -n "$(git log '@{u}..HEAD' --oneline)" ]; then
+              (git pull -q --rebase && git push -q) || echo "push failed, trying again next round"
+            fi
+            sleep 300
+          done
 
+      - name: Start the next run
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run monitor.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME"
