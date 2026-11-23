@@ -5,6 +5,6 @@
 | `com.baixar.musicas.mp3.snap.descargar.musica.original.music.downloader.tube.appa` | 🔴 DOWN | 2026-11-23 09:17 |
 | `com.capcut.aivideoeditor1` | 🔴 DOWN | 2026-10-12 08:17 |
 | `com.huaweihealthandroid.uaelevanhut.huaweihealthoriginalapk` | 🔴 DOWN | 2026-10-02 08:57 |
-| `com.live.football.hd.streaming` | 🔴 DOWN | 2026-11-20 19:29 |
+| `com.live.football.hd.streaming` | 🟢 UP | 2026-11-23 12:59 |
 | `com.naughtymonkeysimulator.prankgames` | 🔴 DOWN | 2026-10-08 02:02 |
 | `com.obbyprison.runescape` | 🔴 DOWN | 2026-10-08 02:02 |
